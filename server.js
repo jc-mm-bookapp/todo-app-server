@@ -9,8 +9,7 @@ client.connect();
 client.on('error', err => {
   console.error(err);
 });
-
-app.use(conString());
+app.use(cors());
 
 app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
 
