@@ -1,6 +1,8 @@
 'use strict'
 
 const express = require('express');
+const cors = require('cors');
+const pg = require('pg');
 const app = express();
 const PORT = process.env.PORT;
 const conString = process.env.DATABASE_URL;
