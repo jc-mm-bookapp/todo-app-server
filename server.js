@@ -13,7 +13,7 @@ client.on('error', err => {
 });
 app.use(cors());
 
-app.get('/', (req, res) => res.send('NOTHING MEANS NOTHING BROTHER'));
+app.get('/', (req, res) => res.send('Cream Rising'));
 
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
