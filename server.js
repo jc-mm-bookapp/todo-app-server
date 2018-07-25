@@ -13,7 +13,15 @@ client.on('error', err => {
 });
 app.use(cors());
 
-app.get('/', (req, res) => res.send('NOTHING MEANS NOTHING BROTHER'));
+app.get('/api/v1/books', (req, res) => {
+  let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books;';
+  client.query(SQL)
+    .then(results => res.send(results.rows))
+    .catch(console.error);
+});
 
+app.get('*', (req, res) => {
+  res.status(404).send('This route does not exist');
+});
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
