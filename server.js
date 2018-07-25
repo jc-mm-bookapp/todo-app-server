@@ -20,6 +20,38 @@ app.get('/api/v1/books', (req, res) => {
     .catch(console.error);
 });
 
+  //--------------------------------------------------------------
+  //--------------------------------------------------------------
+
+app.get('/api/v1/books/:id', (req, res) =>{
+  let SQL =';';
+  let values = [
+    req.params.id
+  ];
+  client.query(SQL, values)
+    .then(results => res.send(results.rows))
+    .catch(console.error);
+
+})
+
+app.post('/api/v1/books', (req, res) =>{
+  let SQL =';';
+  let values = [
+    req.params.id,
+    req.body.title,
+    req.body.author,
+    req.body.image_url,
+    req.body.isbn,
+    req.body.description
+  ];
+  client.query(SQL, values)
+    .then(results => res.send(console.log('Update success!')))
+    .catch(console.error);
+})
+
+  //--------------------------------------------------------------
+  //--------------------------------------------------------------
+
 app.get('*', (req, res) => {
   res.status(404).send('This route does not exist');
 });
