@@ -53,7 +53,7 @@ app.get('/api/v1/books', (req, res) => {
   //--------------------------------------------------------------
 
 app.get('*', (req, res) => {
-  res.status(404).send('This route does not exist: 01 for a test message');
+  res.status(404).send('TEST CONNECT: up?');
 });
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
