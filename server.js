@@ -14,7 +14,7 @@ client.on('error', err => {
 app.use(cors());
 
 app.get('/api/v1/books', (req, res) => {
-  let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books;';
+  let SQL = 'SELECT book_id, title, author, image_url, isbn, book_description FROM books;';
   client.query(SQL)
     .then(results => res.send(results.rows))
     .catch(console.error);
