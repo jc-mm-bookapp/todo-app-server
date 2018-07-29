@@ -34,19 +34,21 @@ app.get('/api/v1/books/:id', (req, res) =>{
 
 })
 
-// app.post('/api/v1/books', (req, res) =>{
-//   let SQL ='INSERT INTO books (title, author, image_url, isbn, book_description) VALUES ($1, $2, $3, $4, $5);';
-//   let values = [
-//     req.body.title,
-//     req.body.author,
-//     req.body.image_url,
-//     req.body.isbn,
-//     req.body.description
-//   ];
-//   client.query(SQL, values)
-//     .then(results => res.send(console.log('Update success!')))
-//     .catch(console.error);
-// })
+  app.post('/api/v1/books', express.urlencoded(),  (request, response) =>{
+    console.log(request.object);
+    let SQL ='INSERT INTO books (title, author, image_url, isbn, book_description) VALUES ($1, $2, $3, $4, $5);';
+    let values = [
+      request.body.title,
+      request.body.author,
+      request.body.image_url,
+      request.body.isbn,
+      request.body.book_description
+    ];
+    console.log(values);
+    client.query(SQL, values)
+      .then(results => response.send(console.log('Update success!')))
+      .catch(console.error);
+  });
 
   // --------------------------------------------------------------
   // --------------------------------------------------------------
